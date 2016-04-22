@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="vegetables">
+        <item>Cherry Tomatoes</item>
+        <item>Mushrooms</item>
+        <item>Olives</item>
+        <item>Jalapeños</item>
+        <item>Red Peppers</item>
+        <item>Asparagus</item>
+        <item>Potatos</item>
+        <item>Carmalized Onions</item>
+        <item>Red Onions</item>
+        <item>Roasted Garlic</item>
+        <item>Sun Dried Tomatoes</item>
+        <item>Spinach</item>
+    </string-array>
+
+    <string-array name="meats">
+        <item>Bacon</item>
+        <item>Suasage</item>
+        <item>Ham</item>
+        <item>Pepperoni</item>
+        <item>Grilled Chicken</item>
+        <item>Salami</item>
+        <item>Crispy Chicken</item>
+    </string-array>
+</resources>

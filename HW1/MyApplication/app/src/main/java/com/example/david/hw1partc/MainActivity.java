@@ -1,0 +1,134 @@
+package com.example.david.hw1partc;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+    public String str ="";
+    public String operator = "";
+    Character op = 'q';
+    float i,num,numtemp;
+    TextView showResult;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        showResult = (TextView)findViewById(R.id.result);
+    }
+
+    public void clickDigit(View view) {
+        int buttonId = view.getId();
+        switch(buttonId){
+            case R.id.Btn2:
+                delete();
+                break;
+            case R.id.Btn3:
+                insert(7);
+                break;
+            case R.id.Btn4:
+                insert(8);
+                break;
+            case R.id.Btn5:
+                insert(9);
+                break;
+            case R.id.Btn6:
+                operator = "/";
+                perform();
+                break;
+            case R.id.Btn7:
+                insert(4);
+                break;
+            case R.id.Btn8:
+                insert(5);
+                break;
+            case R.id.Btn9:
+                insert(6);
+                break;
+            case R.id.Btn10:
+                operator = "*";
+                perform();
+                break;
+            case R.id.Btn11:
+                insert(1);
+                break;
+            case R.id.Btn12:
+                insert(2);
+                break;
+            case R.id.Btn13:
+                insert(3);
+                break;
+            case R.id.Btn14:
+                operator = "-";
+                perform();
+                break;
+            case R.id.Btn15:
+                insert('.');
+                break;
+            case R.id.Btn16:
+                insert(0);
+                break;
+            case R.id.Btn17:
+                calculate();
+            case R.id.Btn18:
+                operator = "+";
+                perform();
+                break;
+        }
+    }
+
+    private void delete() {
+        // TODO Auto-generated method stub
+        if(str.isEmpty()){
+            String error = "Error: nothing to delete";
+            showResult.setText(error);
+        }
+        else if(str.charAt(str.length()-1) == ' '){
+            str = str.replace(str.substring(str.length()-3, str.length()-1), "");
+        }
+        else{
+            str = str.replace(str.substring(str.length()-1), "");
+        }
+        showResult.setText(str);
+    }
+    private void insert(int j) {
+        // TODO Auto-generated method stub
+        str = str+Integer.toString(j);
+        //num = Integer.valueOf(str).intValue();
+        showResult.setText(str);
+    }
+    private void perform() {
+        // TODO Auto-generated method stub
+        str = str+" " + String.valueOf(operator) + " ";
+        //numtemp = num;
+        showResult.setText(str);
+    }
+    private void calculate() {
+        // TODO Auto-generated method stub
+        String phrase = str;
+        String delims = "[ ]+";
+        String[] tokens = phrase.split(delims);
+        float total = Float.parseFloat(tokens[0]);
+        for(int i = 1; i < tokens.length; i++) {
+            String temp = (tokens[i]);
+            if(temp.equals("+"))
+                total += Float.parseFloat(tokens[i+1]);
+            else if(temp.equals("-"))
+                total -= Float.parseFloat(tokens[i+1]);
+            else if(temp.equals("/"))
+                total = total / Float.parseFloat(tokens[i+1]);
+            else if(temp.equals("*"))
+                total = total * Float.parseFloat(tokens[i+1]);
+            else{
+                continue;
+            }
+        }
+        operator="";
+        str = String.valueOf(total);
+        showResult.setText(str);
+
+    }
+}
